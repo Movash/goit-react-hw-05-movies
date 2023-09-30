@@ -26,7 +26,8 @@ const Cast = () => {
     fetchCast();
   }, [movieId]);
 
-  const defaultImg = 'https://www.micreate.eu/wp-content/img/default-img.png';
+  const defaultImg =
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRULocmP6cP6JYFZmzMlbVHbWwu-oAdX5NaQ&usqp=CAU';
 
   return (
     <>

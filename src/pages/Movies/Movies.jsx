@@ -1,11 +1,10 @@
 import { getSearchMovies } from 'api/Movie.api';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import Searchbar from './../../components/Searchbar/Searchbar';
 import MovieGallery from './../../components/MovieGallery/MovieGallery';
 import Loader from './../../components/Loader/Loader';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-
-import React from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 const Movies = () => {
   const [movies, setMovies] = useState([])
@@ -13,11 +12,15 @@ const Movies = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
-  const fetchMovies = useCallback(async () => {
+  const [searchParams] = useSearchParams()
+  const query = searchParams.get('search')
+  const ref = useRef(query);
+
+  const fetchMovies = useCallback(async (searchText) => {
     try {
       setIsLoading(true);
       setError('');
-      const data = await getSearchMovies(searchQuery);
+      const data = await getSearchMovies(searchText);
       if (!data.results.length) {
         Notify.info(`No movies`);
         return;
@@ -28,11 +31,16 @@ const Movies = () => {
     } finally {
       setIsLoading(false);
     }
-  }, [searchQuery]);
+  }, []);
 
   useEffect(() => {
-    searchQuery && fetchMovies();
+    searchQuery && fetchMovies(searchQuery);
   }, [fetchMovies, searchQuery]);
+
+  useEffect(() => {
+    ref.current && fetchMovies(ref.current)
+  }, [fetchMovies]);
+  
 
   const handleSetSearchQuery = value => {
     if (!value.trim() || value === searchQuery) {

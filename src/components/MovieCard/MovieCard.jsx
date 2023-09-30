@@ -1,7 +1,6 @@
 import React from 'react'
 
 const MovieCard = ({movie}) => {
-  // console.log(movie);
   const defaultImg = 'https://www.micreate.eu/wp-content/img/default-img.png';
   return (
     <div>

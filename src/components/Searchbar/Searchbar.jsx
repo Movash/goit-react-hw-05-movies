@@ -1,19 +1,21 @@
-import { useState } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
-
-import React from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 const Searchbar = ({ onSubmit }) => {
-  const [value, setValue] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const query = searchParams.get('search') || '';
 
   const handleChange = ({ target: { value } }) => {
-    setValue(value);
+    value
+      ? setSearchParams({ search: value })
+      : setSearchParams({});
+    
   };
 
   const handleSubmit = evt => {
     evt.preventDefault();
-    onSubmit(value);
-    setValue('');
+    onSubmit(query);
   };
 
   return (
@@ -25,7 +27,7 @@ const Searchbar = ({ onSubmit }) => {
         autoFocus
         placeholder="Search films"
         onChange={handleChange}
-        value={value}
+        value={query}
       />
       <button type="submit" className="SearchForm-button">
         <AiOutlineSearch className="SearchForm-icon" />
