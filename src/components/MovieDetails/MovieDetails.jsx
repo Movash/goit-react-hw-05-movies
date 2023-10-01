@@ -1,5 +1,5 @@
 import { getMovieDetails } from "api/Movie.api";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { Link, Outlet, useLocation, useNavigate, useParams } from "react-router-dom"
 import Loader from './../Loader/Loader';
 import MovieCard from './../MovieCard/MovieCard';
@@ -13,6 +13,7 @@ const MovieDetails = () => {
 
   const navigate = useNavigate()
   const location = useLocation();
+  const backLinkLocationRef = useRef(location.state ?? '/movies');
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -31,19 +32,21 @@ const MovieDetails = () => {
   }, [movieId]);
 
   const handleClickBackBtn = () => {
-    navigate(location.state);
+    navigate(backLinkLocationRef.current);
   }
 
   return (
     <>
-      <button onClick={handleClickBackBtn}>Go back</button>
+      <button onClick={handleClickBackBtn}>⬅ Go back</button>
       {error && <h1>{error}</h1>}
       {isLoading && <Loader />}
       {movie && <MovieCard movie={movie} />}
       <p>Additional information</p>
       <Link to="cast">Cast</Link>
       <Link to="reviews">Reviews</Link>
-      <Outlet />
+      <Suspense fallback={<Loader />}>
+        <Outlet />
+      </Suspense>
     </>
   );
 }

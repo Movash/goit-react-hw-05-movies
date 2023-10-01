@@ -4,7 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 const Searchbar = ({ onSubmit }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const query = searchParams.get('search') || '';
+  const query = searchParams.get('search') ?? '';
 
   const handleChange = ({ target: { value } }) => {
     value

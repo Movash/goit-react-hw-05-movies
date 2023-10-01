@@ -33,25 +33,28 @@ const Cast = () => {
     <>
       {error && <h1>{error}</h1>}
       {isLoading && <Loader />}
-      {cast && (
-        <ul>
-          {cast.cast.map(person => (
-            <li key={person.id}>
-              <img
-                src={
-                  person.profile_path
-                    ? `https://image.tmdb.org/t/p/w200/${person.profile_path}`
-                    : defaultImg
-                }
-                alt={cast.cast.name}
-                width="200px"
-              />
-              <p>{person.name}</p>
-              <p>Character: {person.character}</p>
-            </li>
-          ))}
-        </ul>
-      )}
+      {cast &&
+        (cast.cast.length ? (
+          <ul>
+            {cast.cast.map(person => (
+              <li key={person.id}>
+                <img
+                  src={
+                    person.profile_path
+                      ? `https://image.tmdb.org/t/p/w200/${person.profile_path}`
+                      : defaultImg
+                  }
+                  alt={cast.cast.name}
+                  width="200px"
+                />
+                <p>{person.name}</p>
+                <p>Character: {person.character}</p>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>We don't have any cast for this movie.</p>
+        ))}
     </>
   );
 };
