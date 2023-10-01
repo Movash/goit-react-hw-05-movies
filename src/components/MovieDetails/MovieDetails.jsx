@@ -1,5 +1,6 @@
 import { getMovieDetails } from "api/Movie.api";
 import { Suspense, useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { Link, Outlet, useLocation, useNavigate, useParams } from "react-router-dom"
 import Loader from './../Loader/Loader';
 import MovieCard from './../MovieCard/MovieCard';
