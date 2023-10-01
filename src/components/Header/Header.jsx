@@ -1,8 +1,9 @@
 import { NavLink } from "react-router-dom"
+import { Nav } from './Header.styled';
 
 const Header = () => {
   return (
-    <nav>
+    <Nav>
       <div>
         <NavLink to="/">
           Home
@@ -11,7 +12,7 @@ const Header = () => {
           Movies
         </NavLink>
       </div>
-    </nav>
+    </Nav>
   )
 }
 

@@ -2,6 +2,7 @@ import { getMovieCredits } from 'api/Movie.api';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Loader from './../Loader/Loader';
+import { CastWrap } from './Cast.styled';
 
 const Cast = () => {
   const { movieId } = useParams();
@@ -30,29 +31,32 @@ const Cast = () => {
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRULocmP6cP6JYFZmzMlbVHbWwu-oAdX5NaQ&usqp=CAU';
 
   return (
-    <>
+    <CastWrap>
       {error && <h1>{error}</h1>}
       {isLoading && <Loader />}
-      {cast && (
-        <ul>
-          {cast.cast.map(person => (
-            <li key={person.id}>
-              <img
-                src={
-                  person.profile_path
-                    ? `https://image.tmdb.org/t/p/w200/${person.profile_path}`
-                    : defaultImg
-                }
-                alt={cast.cast.name}
-                width="200px"
-              />
-              <p>{person.name}</p>
-              <p>Character: {person.character}</p>
-            </li>
-          ))}
-        </ul>
-      )}
-    </>
+      {cast &&
+        (cast.cast.length ? (
+          <ul>
+            {cast.cast.map(person => (
+              <li key={person.id}>
+                <img
+                  src={
+                    person.profile_path
+                      ? `https://image.tmdb.org/t/p/w200/${person.profile_path}`
+                      : defaultImg
+                  }
+                  alt={cast.cast.name}
+                  width="200px"
+                />
+                <p>{person.name}</p>
+                <p>Character: {person.character}</p>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>We don't have any cast for this movie.</p>
+        ))}
+    </CastWrap>
   );
 };
 

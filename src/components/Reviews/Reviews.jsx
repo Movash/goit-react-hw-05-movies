@@ -2,6 +2,7 @@ import { getMovieReviews } from 'api/Movie.api';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Loader from './../Loader/Loader';
+import { ReviewsWrap } from './Reviews.styles';
 
 const Reviews = () => {
   const { movieId } = useParams();
@@ -27,22 +28,23 @@ const Reviews = () => {
   }, [movieId]);
 
   return (
-    <>
+    <ReviewsWrap>
       {error && <h1>{error}</h1>}
       {isLoading && <Loader />}
-      {review && (review.results.length ?
-        <ul>
-          {review.results.map(descr => (
-            <li key={descr.id}>
-              <h3>Author: {descr.author}</h3>
-              <p>{descr.content}</p>
-            </li>
-          ))}
-        </ul>
-        :
-        <p>We don't have any reviews for this movie.</p>
-      )}
-    </>
+      {review &&
+        (review.results.length ? (
+          <ul>
+            {review.results.map(descr => (
+              <li key={descr.id}>
+                <h3>Author: {descr.author}</h3>
+                <p>{descr.content}</p>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>We don't have any reviews for this movie.</p>
+        ))}
+    </ReviewsWrap>
   );
 };
 

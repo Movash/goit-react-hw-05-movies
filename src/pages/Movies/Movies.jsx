@@ -5,6 +5,7 @@ import MovieGallery from './../../components/MovieGallery/MovieGallery';
 import Loader from './../../components/Loader/Loader';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { useSearchParams } from 'react-router-dom';
+import { MoviesWrap } from './Movies.styled';
 
 const Movies = () => {
   const [movies, setMovies] = useState([])
@@ -52,12 +53,12 @@ const Movies = () => {
   };
 
   return (
-    <div className="Movies">
+    <MoviesWrap>
       {error && <h1>{error}</h1>}
       <Searchbar onSubmit={handleSetSearchQuery} />
       {isLoading && <Loader />}
       {!movies.length ? null : <MovieGallery movies={movies} />}
-    </div>
+    </MoviesWrap>
   );
 };
 
