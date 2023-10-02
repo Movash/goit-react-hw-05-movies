@@ -1,5 +1,6 @@
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useSearchParams } from 'react-router-dom';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const Searchbar = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -8,8 +9,11 @@ const Searchbar = () => {
 
   const handleSubmit = evt => {
     evt.preventDefault();
-    const inputText = evt.target.input.value.trim().toLowerCase()
-    if (!inputText) return
+    const inputText = evt.target.input.value.trim().toLowerCase();
+    if (!inputText || inputText === query) {
+      Notify.info(`Change your search query`);
+      return;
+    }
     setSearchParams({ search: inputText });
   };
 
@@ -45,7 +49,6 @@ export default Searchbar;
 //     value
 //       ? setSearchParams({ search: value })
 //       : setSearchParams({});
-    
 //   };
 
 //   const handleSubmit = evt => {
