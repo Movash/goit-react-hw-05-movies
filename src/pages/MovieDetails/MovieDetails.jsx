@@ -1,9 +1,15 @@
-import { getMovieDetails } from "api/Movie.api";
-import { Suspense, useEffect, useRef, useState } from "react";
-import { Link, Outlet, useLocation, useNavigate, useParams } from "react-router-dom"
-import Loader from './../Loader/Loader';
-import MovieCard from './../MovieCard/MovieCard';
-import { DetailsWrap } from "./MovieDetails.styled";
+import { getMovieDetails } from 'api/Movie.api';
+import { Suspense, useEffect, useRef, useState } from 'react';
+import {
+  Link,
+  Outlet,
+  useLocation,
+  useNavigate,
+  useParams,
+} from 'react-router-dom';
+import Loader from '../../components/Loader/Loader';
+import MovieCard from '../../components/MovieCard/MovieCard';
+import { DetailsWrap } from './MovieDetails.styled';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -12,7 +18,7 @@ const MovieDetails = () => {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state ?? '/movies');
 
@@ -29,12 +35,12 @@ const MovieDetails = () => {
         setIsLoading(false);
       }
     };
-      fetchDetails();
+    fetchDetails();
   }, [movieId]);
 
   const handleClickBackBtn = () => {
     navigate(backLinkLocationRef.current);
-  }
+  };
 
   return (
     <DetailsWrap>
@@ -50,6 +56,6 @@ const MovieDetails = () => {
       </Suspense>
     </DetailsWrap>
   );
-}
+};
 
-export default MovieDetails
+export default MovieDetails;

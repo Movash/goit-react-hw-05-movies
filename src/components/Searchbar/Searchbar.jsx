@@ -1,21 +1,16 @@
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useSearchParams } from 'react-router-dom';
 
-const Searchbar = ({ onSubmit }) => {
+const Searchbar = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const query = searchParams.get('search') ?? '';
 
-  const handleChange = ({ target: { value } }) => {
-    value
-      ? setSearchParams({ search: value })
-      : setSearchParams({});
-    
-  };
-
   const handleSubmit = evt => {
     evt.preventDefault();
-    onSubmit(query);
+    const inputText = evt.target.input.value.trim().toLowerCase()
+    if (!inputText) return
+    setSearchParams({ search: inputText });
   };
 
   return (
@@ -23,11 +18,11 @@ const Searchbar = ({ onSubmit }) => {
       <input
         className="SearchForm-input"
         type="text"
+        name="input"
         autoComplete="off"
         autoFocus
         placeholder="Search films"
-        onChange={handleChange}
-        value={query}
+        defaultValue={query}
       />
       <button type="submit" className="SearchForm-button">
         <AiOutlineSearch className="SearchForm-icon" />
@@ -37,3 +32,43 @@ const Searchbar = ({ onSubmit }) => {
 };
 
 export default Searchbar;
+
+// import { AiOutlineSearch } from 'react-icons/ai';
+// import { useSearchParams } from 'react-router-dom';
+
+// const Searchbar = ({ onSubmit }) => {
+//   const [searchParams, setSearchParams] = useSearchParams();
+
+//   const query = searchParams.get('search') ?? '';
+
+//   const handleChange = ({ target: { value } }) => {
+//     value
+//       ? setSearchParams({ search: value })
+//       : setSearchParams({});
+    
+//   };
+
+//   const handleSubmit = evt => {
+//     evt.preventDefault();
+//     onSubmit(query);
+//   };
+
+//   return (
+//     <form className="SearchForm" onSubmit={handleSubmit}>
+//       <input
+//         className="SearchForm-input"
+//         type="text"
+//         autoComplete="off"
+//         autoFocus
+//         placeholder="Search films"
+//         onChange={handleChange}
+//         value={query}
+//       />
+//       <button type="submit" className="SearchForm-button">
+//         <AiOutlineSearch className="SearchForm-icon" />
+//       </button>
+//     </form>
+//   );
+// };
+
+// export default Searchbar;

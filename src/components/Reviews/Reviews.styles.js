@@ -8,7 +8,9 @@ export const ReviewsWrap = styled('div')(() => {
         '& h3': {
           marginBottom: 10,
         },
-        '& p': {},
+        '& p': {
+          marginBottom: 20,
+        },
       },
     },
   };
