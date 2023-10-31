@@ -8,16 +8,16 @@ const MovieCard = ({movie}) => {
         <img
           src={
             movie.backdrop_path
-              ? `https://image.tmdb.org/t/p/w300/${movie.backdrop_path}`
+              ? `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`
               : defaultImg
           }
           alt={movie.title}
-          width="300px"
+          width="500px"
         />
       </div>
       <div className='film-descr'>
         <h2>{movie.title}</h2>
-        <p>Reliese date: {movie.release_date}</p>
+        <p>Release date: {movie.release_date}</p>
         <h3>Overview</h3>
         <p>{movie.overview}</p>
         <h4>Genres</h4>

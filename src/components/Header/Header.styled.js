@@ -4,8 +4,9 @@ export const Nav = styled('nav')(() => {
   return {
     paddingTop: 15,
     paddingBottom: 15,
-    borderBottom: '1px solid gray',
-    boxShadow: '0px 5px 5px gray',
+    borderBottom: '1px solid #4f67ff',
+    boxShadow: '0px 5px 5px #4f67ff',
+    backgroundColor: '#4554b1',
     '& div': {
       '& a': {
         fontWeight: 700,

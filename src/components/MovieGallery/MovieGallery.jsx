@@ -1,12 +1,13 @@
 import React from 'react';
 import MovieGalleryItem from './../MovieGalleryItem/MovieGalleryItem';
+import { GalleryList } from './MovieGallery.styled';
 
 const MovieGallery = ({ movies }) => (
-  <ul className="MovieGallery">
+  <GalleryList className="MovieGallery">
     {movies.map(movie => (
       <MovieGalleryItem key={movie.id} movie={movie} />
     ))}
-  </ul>
+  </GalleryList>
 );
 
 export default MovieGallery;

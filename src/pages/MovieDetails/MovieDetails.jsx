@@ -48,9 +48,13 @@ const MovieDetails = () => {
       {error && <h1>{error}</h1>}
       {isLoading && <Loader />}
       {movie && <MovieCard movie={movie} />}
-      <p className="add-info">Additional information</p>
-      <Link to="cast">Cast</Link>
-      <Link to="reviews">Reviews</Link>
+      <div className="add-info-wrapper">
+        <p className="add-info">Additional information</p>
+        <Link to="cast" className="add-info-cast">
+          Cast
+        </Link>
+        <Link to="reviews">Reviews</Link>
+      </div>
       <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>

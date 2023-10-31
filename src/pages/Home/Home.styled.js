@@ -2,11 +2,15 @@ import { styled } from 'styled-components';
 
 export const HomeWrap = styled('div')(() => {
   return {
-    marginLeft: 40,
-    marginRight: 40,
+    paddingLeft: 40,
+    paddingRight: 40,
+    paddingBottom: 20,
+    paddingTop: 15,
+    marginTop: 5,
     '& h2': {
-      marginTop: 20,
-      marginBottom: 15,
+      marginBottom: 20,
+      textAlign: 'center',
+      fontSize: 40,
     },
     '& div': {
       '& ul': {
