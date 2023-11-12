@@ -6,7 +6,7 @@ export const HomeWrap = styled('div')(() => {
     paddingRight: 40,
     paddingBottom: 20,
     paddingTop: 15,
-    marginTop: 5,
+    marginTop: 65,
     '& h2': {
       marginBottom: 20,
       textAlign: 'center',

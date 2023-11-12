@@ -2,6 +2,10 @@ import { styled } from 'styled-components';
 
 export const Nav = styled('nav')(() => {
   return {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
     paddingTop: 15,
     paddingBottom: 15,
     borderBottom: '1px solid #4f67ff',

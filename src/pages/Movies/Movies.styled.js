@@ -2,7 +2,7 @@ import { styled } from 'styled-components';
 
 export const MoviesWrap = styled('div')(() => {
   return {
-    marginTop: 5,
+    marginTop: 65,
     paddingTop: 15,
     paddingLeft: 40,
     paddingRight: 40,

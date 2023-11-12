@@ -2,7 +2,7 @@ import { styled } from 'styled-components';
 
 export const DetailsWrap = styled('div')(() => {
   return {
-    marginTop: 5,
+    marginTop: 65,
     paddingTop: 5,
     paddingLeft: 40,
     paddingRight: 40,

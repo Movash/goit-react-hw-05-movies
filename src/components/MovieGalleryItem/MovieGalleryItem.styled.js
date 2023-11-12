@@ -10,6 +10,7 @@ export const GalleryItem = styled('li')(() => {
     '& img': {
       borderRadius: '10px',
       marginBottom: 10,
+      height: 225,
     },
     '& p': {
       marginTop: 10,
